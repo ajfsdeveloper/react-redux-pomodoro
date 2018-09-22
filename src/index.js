@@ -9,7 +9,7 @@ import store from './store'
 
 const app = (
   <Provider store={store}>
-    <App defaultTime="10:30" />
+    <App defaultTime="00:10" />
   </Provider>
 )
 
