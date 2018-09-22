@@ -1,7 +1,12 @@
 import moment from 'moment'
-import { SET_DEFAULT_TIME, UPDATE_DISPLAY_TIME } from './actionTypes'
+import {
+  SET_DEFAULT_TIME,
+  UPDATE_DISPLAY_TIME,
+  START_POMODORO,
+  STOP_POMODORO
+} from './actionTypes'
 
-let timer = null
+let timerClock = null
 
 export const setDefaultTime = (defaultTimeString) => {
   return {
@@ -27,16 +32,41 @@ const getUpdatedDisplayTimeString = (currentDisplayTime) => {
   const updatedDisplayTimeString = `${updatedMinute}:${updatedSecond}`
 
   if (currentTime.get('minute') === 0 & currentTime.get('second') === 0) {
-    completeTimer()
+    stopTimer()
   }
 
   return updatedDisplayTimeString
 }
 
+const startPomodoro = () => {
+  return {
+    type: START_POMODORO
+  }
+}
+
+const stopPomodoro = () => {
+  return {
+    type: STOP_POMODORO
+  }
+}
+
 export const startTimer = () => {
   return (dispatch, getState) => {
-    timer = setInterval(() => {
-      const currentDisplayTime = getState().timer.displayTime
+
+    dispatch(startPomodoro())
+
+    let currentDisplayTime = getState().timer.displayTime
+    const currentTime = moment.duration(`00:${currentDisplayTime}`)
+
+    if (currentTime.get('minute') === 0 & currentTime.get('second') === 0) {
+      console.log('return')
+      return
+    }
+
+    // console.log('startTimer', timerClock)
+
+    timerClock = setInterval(() => {
+      currentDisplayTime = getState().timer.displayTime
       const updatedDisplayTimeString = getUpdatedDisplayTimeString(currentDisplayTime)
 
       dispatch(updateDisplayTime(updatedDisplayTimeString))
@@ -44,12 +74,16 @@ export const startTimer = () => {
   }
 }
 
-export const completeTimer = () => {
-  console.log('completeTimer')
-  clearInterval(timer)
-}
-
 export const stopTimer = () => {
-  console.log('stopTimer')
-  clearInterval(timer)
+  clearInterval(timerClock)
+  return (dispatch, getState) => {
+    dispatch(stopPomodoro())
+
+    // console.log('stopTimer', timerClock)
+
+    /* const currentDisplayTime = getState().timer.displayTime
+    const updatedDisplayTimeString = getUpdatedDisplayTimeString(currentDisplayTime)
+
+    dispatch(updateDisplayTime(updatedDisplayTimeString)) */
+  }
 }

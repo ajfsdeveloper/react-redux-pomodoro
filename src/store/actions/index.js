@@ -1,5 +1,6 @@
 export {
   setDefaultTime,
   updateDisplayTime,
-  startTimer
+  startTimer,
+  stopTimer
 } from './timer'
