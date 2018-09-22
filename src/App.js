@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
+import NotyToaster from './components/NotyToaster'
 import TimerDisplay from './components/TimerDisplay'
 
 import * as actions from './store/actions/index'
@@ -22,6 +24,7 @@ class App extends Component {
     return (
       <div>
         <h1>Hey There!!</h1>
+        <NotyToaster />
         <TimerDisplay displayTime={this.props.displayTime} />
 
         <button onClick={() => this.props.updateDisplayTime('13:45')}>UPDATE</button>
