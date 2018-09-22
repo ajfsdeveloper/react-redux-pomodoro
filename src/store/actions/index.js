@@ -1,0 +1,1 @@
+export { setDefaultTime } from './timer'

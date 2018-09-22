@@ -4,7 +4,7 @@ const TimerDisplay = (props) => {
 
   console.log('TimerDisplay', props)
 
-  return <div>{props.displayTime !== null ? props.displayTime : '00:00'}</div>
+  return <div>{props.displayTime}</div>
 }
 
 export default TimerDisplay

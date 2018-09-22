@@ -30,7 +30,7 @@ const store = createStore(rootReducer, composeEnhancers(
 
 const app = (
   <Provider store={store}>
-    <App defaultTime="20:00" />
+    <App defaultTime="10:30" />
   </Provider>
 )
 

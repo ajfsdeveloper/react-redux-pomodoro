@@ -2,11 +2,23 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import TimerDisplay from './components/TimerDisplay'
 
+import * as actions from './store/actions/index'
+
 class App extends Component {
+
+  constructor(props) {
+    super(props)
+
+    props.setDefaultTime(props.defaultTime)
+
+    console.log('APP constructor', props)
+  }
+
+  componentDidMount() {
+    console.log('APP componentDidMount', this.props)
+  }
+
   render() {
-
-    console.log('props', this.props)
-
     return (
       <div>
         <h1>Hey There!!</h1>
@@ -22,4 +34,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = dispatch => {
+  return {
+    setDefaultTime: (defaultTime) => dispatch(actions.setDefaultTime(defaultTime))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
