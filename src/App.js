@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 
 import NotyToaster from './components/NotyToaster'
 import TimerDisplay from './components/TimerDisplay'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 import * as actions from './store/actions/index'
 
@@ -22,17 +24,20 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Hey There!!</h1>
+      <Fragment>
         <NotyToaster />
-        <TimerDisplay displayTime={this.props.displayTime} />
+        <Header />
+        <main>
+          <TimerDisplay displayTime={this.props.displayTime} />
 
-        <button onClick={() => this.props.updateDisplayTime('13:45')}>UPDATE</button>
-        <button onClick={() => this.props.startTimer()}>START</button>
-        <button onClick={() => this.props.pauseTimer()}>PAUSE</button>
-        <button onClick={() => this.props.resumeTimer()}>RESUME</button>
-        <button onClick={() => this.props.stopTimer()}>STOP</button>
-      </div>
+          <button onClick={() => this.props.updateDisplayTime('13:45')}>UPDATE</button>
+          <button onClick={() => this.props.startTimer()}>START</button>
+          <button onClick={() => this.props.pauseTimer()}>PAUSE</button>
+          <button onClick={() => this.props.resumeTimer()}>RESUME</button>
+          <button onClick={() => this.props.stopTimer()}>STOP</button>
+        </main>
+        <Footer />
+      </Fragment>
     )
   }
 }
