@@ -47,10 +47,10 @@ const mapDispatchToProps = dispatch => {
   return {
     setDefaultTime: (defaultTime) => dispatch(actions.setDefaultTime(defaultTime)),
     updateDisplayTime: (newTime) => dispatch(actions.updateDisplayTime(newTime)),
-    startTimer: () => dispatch(actions.startTimer()),
-    stopTimer: () => dispatch(actions.stopTimer()),
+    startTimer: () => dispatch(actions.startTimer('START')),
+    stopTimer: () => dispatch(actions.stopTimer('STOP')),
     pauseTimer: () => dispatch(actions.pauseTimer()),
-    resumeTimer: () => dispatch(actions.resumeTimer())
+    resumeTimer: () => dispatch(actions.startTimer('RESUME'))
   }
 }
 

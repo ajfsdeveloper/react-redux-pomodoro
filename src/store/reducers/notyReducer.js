@@ -4,12 +4,11 @@ import {
   START_POMODORO,
   STOP_POMODORO,
   PAUSE_POMODORO,
-  RESUME_POMODORO
+  RESUME_POMODORO,
+  COMPLETE_POMODORO
 } from '../actions/actionTypes'
 
 const notyReducer = (state = {}, action) => {
-
-  // console.log('notyReducer', action)
 
   switch (action.type) {
     case SET_DEFAULT_TIME:
@@ -27,25 +26,31 @@ const notyReducer = (state = {}, action) => {
     case START_POMODORO:
       return {
         type: 'success',
-        message: 'Countdown started!'
+        message: 'Pomodoro is started!'
       }
 
     case STOP_POMODORO:
       return {
         type: 'success',
-        message: 'Countdown stopped!'
+        message: 'Pomodoro is stopped!'
       }
 
     case PAUSE_POMODORO:
       return {
         type: 'success',
-        message: 'Countdown is paused!'
+        message: 'Pomodoro is paused!'
       }
 
     case RESUME_POMODORO:
       return {
         type: 'success',
-        message: 'Countdown is resumed!'
+        message: 'Pomodoro is resumed!'
+      }
+
+    case COMPLETE_POMODORO:
+      return {
+        type: 'success',
+        message: 'Pomodoro is completed!'
       }
 
     default:

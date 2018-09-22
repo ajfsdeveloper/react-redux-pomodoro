@@ -3,13 +3,13 @@ export {
   updateDisplayTime,
   startTimer,
   stopTimer,
-  pauseTimer,
-  resumeTimer
+  pauseTimer
 } from './timer'
 
 export {
   startPomodoro,
   stopPomodoro,
   pausePomodoro,
-  resumePomodoro
+  resumePomodoro,
+  completePomodoro
 } from './activity'

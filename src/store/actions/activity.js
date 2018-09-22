@@ -2,7 +2,8 @@ import {
   START_POMODORO,
   STOP_POMODORO,
   PAUSE_POMODORO,
-  RESUME_POMODORO
+  RESUME_POMODORO,
+  COMPLETE_POMODORO
 } from './actionTypes'
 
 export const startPomodoro = () => {
@@ -26,5 +27,11 @@ export const pausePomodoro = () => {
 export const resumePomodoro = () => {
   return {
     type: RESUME_POMODORO
+  }
+}
+
+export const completePomodoro = () => {
+  return {
+    type: COMPLETE_POMODORO
   }
 }
