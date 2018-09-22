@@ -2,5 +2,14 @@ export {
   setDefaultTime,
   updateDisplayTime,
   startTimer,
-  stopTimer
+  stopTimer,
+  pauseTimer,
+  resumeTimer
 } from './timer'
+
+export {
+  startPomodoro,
+  stopPomodoro,
+  pausePomodoro,
+  resumePomodoro
+} from './activity'

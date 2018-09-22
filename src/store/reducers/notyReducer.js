@@ -2,7 +2,9 @@ import {
   SET_DEFAULT_TIME,
   UPDATE_DISPLAY_TIME,
   START_POMODORO,
-  STOP_POMODORO
+  STOP_POMODORO,
+  PAUSE_POMODORO,
+  RESUME_POMODORO
 } from '../actions/actionTypes'
 
 const notyReducer = (state = {}, action) => {
@@ -32,6 +34,18 @@ const notyReducer = (state = {}, action) => {
       return {
         type: 'success',
         message: 'Countdown stopped!'
+      }
+
+    case PAUSE_POMODORO:
+      return {
+        type: 'success',
+        message: 'Countdown is paused!'
+      }
+
+    case RESUME_POMODORO:
+      return {
+        type: 'success',
+        message: 'Countdown is resumed!'
       }
 
     default:

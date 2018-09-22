@@ -1,4 +1,9 @@
-import { SET_DEFAULT_TIME, UPDATE_DISPLAY_TIME } from '../actions/actionTypes'
+import {
+  SET_DEFAULT_TIME,
+  UPDATE_DISPLAY_TIME,
+  STOP_POMODORO
+} from '../actions/actionTypes'
+
 import { updateObject } from '../../utils/utility'
 
 const initialState = {
@@ -19,10 +24,17 @@ const updateDisplayTime = (state, action) => {
   })
 }
 
+const stopDisplayTime = (state, action) => {
+  return updateObject(state, {
+    displayTime: '00:00'
+  })
+}
+
 const timerReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_DEFAULT_TIME: return setDefaultTime(state, action)
     case UPDATE_DISPLAY_TIME: return updateDisplayTime(state, action)
+    case STOP_POMODORO: return stopDisplayTime(state, action)
     default: return state
   }
 }

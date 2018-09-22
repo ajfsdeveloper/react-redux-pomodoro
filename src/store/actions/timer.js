@@ -1,10 +1,11 @@
 import moment from 'moment'
+
 import {
   SET_DEFAULT_TIME,
-  UPDATE_DISPLAY_TIME,
-  START_POMODORO,
-  STOP_POMODORO
+  UPDATE_DISPLAY_TIME
 } from './actionTypes'
+
+import { startPomodoro, stopPomodoro, pausePomodoro, resumePomodoro } from './activity'
 
 let timerClock = null
 
@@ -38,32 +39,17 @@ const getUpdatedDisplayTimeString = (currentDisplayTime) => {
   return updatedDisplayTimeString
 }
 
-const startPomodoro = () => {
-  return {
-    type: START_POMODORO
-  }
-}
-
-const stopPomodoro = () => {
-  return {
-    type: STOP_POMODORO
-  }
-}
-
 export const startTimer = () => {
   return (dispatch, getState) => {
-
-    dispatch(startPomodoro())
 
     let currentDisplayTime = getState().timer.displayTime
     const currentTime = moment.duration(`00:${currentDisplayTime}`)
 
     if (currentTime.get('minute') === 0 & currentTime.get('second') === 0) {
-      console.log('return')
       return
     }
 
-    // console.log('startTimer', timerClock)
+    dispatch(startPomodoro())
 
     timerClock = setInterval(() => {
       currentDisplayTime = getState().timer.displayTime
@@ -74,16 +60,39 @@ export const startTimer = () => {
   }
 }
 
+export const resumeTimer = () => {
+  return (dispatch, getState) => {
+
+    let currentDisplayTime = getState().timer.displayTime
+    const currentTime = moment.duration(`00:${currentDisplayTime}`)
+
+    if (currentTime.get('minute') === 0 & currentTime.get('second') === 0) {
+      return
+    }
+
+    dispatch(resumePomodoro())
+
+    timerClock = setInterval(() => {
+      currentDisplayTime = getState().timer.displayTime
+      const updatedDisplayTimeString = getUpdatedDisplayTimeString(currentDisplayTime)
+
+      dispatch(updateDisplayTime(updatedDisplayTimeString))
+    }, 1000)
+  }
+}
+
+export const pauseTimer = () => {
+  clearInterval(timerClock)
+
+  return (dispatch) => {
+    dispatch(pausePomodoro())
+  }
+}
+
 export const stopTimer = () => {
   clearInterval(timerClock)
-  return (dispatch, getState) => {
+
+  return (dispatch) => {
     dispatch(stopPomodoro())
-
-    // console.log('stopTimer', timerClock)
-
-    /* const currentDisplayTime = getState().timer.displayTime
-    const updatedDisplayTimeString = getUpdatedDisplayTimeString(currentDisplayTime)
-
-    dispatch(updateDisplayTime(updatedDisplayTimeString)) */
   }
 }
