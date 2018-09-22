@@ -1,1 +1,4 @@
-export { setDefaultTime } from './timer'
+export {
+  setDefaultTime,
+  updateDisplayTime
+} from './timer'

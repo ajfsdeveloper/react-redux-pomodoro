@@ -23,6 +23,8 @@ class App extends Component {
       <div>
         <h1>Hey There!!</h1>
         <TimerDisplay displayTime={this.props.displayTime} />
+
+        <button onClick={() => this.props.updateDisplayTime('13:45')}>UPDATE</button>
       </div>
     )
   }
@@ -36,7 +38,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setDefaultTime: (defaultTime) => dispatch(actions.setDefaultTime(defaultTime))
+    setDefaultTime: (defaultTime) => dispatch(actions.setDefaultTime(defaultTime)),
+    updateDisplayTime: (newTime) => dispatch(actions.updateDisplayTime(newTime))
   }
 }
 
