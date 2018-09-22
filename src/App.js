@@ -27,15 +27,15 @@ class App extends Component {
       <Fragment>
         <NotyToaster />
         <Header />
-        <main>
-          <TimerDisplay displayTime={this.props.displayTime} />
 
-          <button onClick={() => this.props.updateDisplayTime('13:45')}>UPDATE</button>
-          <button onClick={() => this.props.startTimer()}>START</button>
-          <button onClick={() => this.props.pauseTimer()}>PAUSE</button>
-          <button onClick={() => this.props.resumeTimer()}>RESUME</button>
-          <button onClick={() => this.props.stopTimer()}>STOP</button>
-        </main>
+        <TimerDisplay displayTime={this.props.displayTime} />
+
+        <button onClick={() => this.props.updateDisplayTime('13:45')}>UPDATE</button>
+        <button onClick={() => this.props.startTimer()}>START</button>
+        <button onClick={() => this.props.pauseTimer()}>PAUSE</button>
+        <button onClick={() => this.props.resumeTimer()}>RESUME</button>
+        <button onClick={() => this.props.stopTimer()}>STOP</button>
+
         <Footer />
       </Fragment>
     )
