@@ -20,10 +20,14 @@ export const updateDisplayTime = (updatedDisplayTimeString) => {
 const getUpdatedDisplayTimeString = (currentDisplayTime) => {
   const currentTime = moment.duration(`00:${currentDisplayTime}`)
   const updatedTime = currentTime.subtract(1, 'second')
-  const updatedDisplayTimeString = `${updatedTime.get('minute')}:${updatedTime.get('second')}`
+  const minute = updatedTime.get('minute')
+  const second = updatedTime.get('second')
+  const updatedMinute = minute < 10 ? `0${minute}` : minute
+  const updatedSecond = second < 10 ? `0${second}` : second
+  const updatedDisplayTimeString = `${updatedMinute}:${updatedSecond}`
 
   if (currentTime.get('minute') === 0 & currentTime.get('second') === 0) {
-    stopTimer()
+    completeTimer()
   }
 
   return updatedDisplayTimeString
@@ -38,6 +42,11 @@ export const startTimer = () => {
       dispatch(updateDisplayTime(updatedDisplayTimeString))
     }, 1000)
   }
+}
+
+export const completeTimer = () => {
+  console.log('completeTimer')
+  clearInterval(timer)
 }
 
 export const stopTimer = () => {
