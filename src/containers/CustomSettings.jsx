@@ -35,7 +35,9 @@ class CustomSettings extends Component {
 
   componentDidMount() {
     window.$('.collapsible').collapsible()
-    // console.log('collapsible')
+
+    const array_of_dom_elements = document.querySelectorAll("input[type=range]")
+    window.M.Range.init(array_of_dom_elements)
   }
 
   render() {
