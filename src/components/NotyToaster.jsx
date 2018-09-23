@@ -12,6 +12,7 @@ class NotyToaster extends Component {
         text: noty.message,
         type: noty.type,
         theme: 'sunset',
+        closeWith: ['click'],
         timeout: 3000
       }).show()
     }

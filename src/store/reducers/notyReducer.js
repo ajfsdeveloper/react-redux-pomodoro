@@ -13,37 +13,37 @@ const notyReducer = (state = {}, action) => {
   switch (action.type) {
     case SET_DEFAULT_TIME:
       return {
-        type: 'success',
+        type: 'info',
         message: 'Default Time set successfully!'
       }
 
     case UPDATE_DISPLAY_TIME:
       return {
-        type: 'success',
+        type: 'alert',
         message: 'Display Time updated successfully!'
       }
 
     case START_POMODORO:
       return {
-        type: 'success',
+        type: 'info',
         message: 'Pomodoro is started!'
       }
 
     case STOP_POMODORO:
       return {
-        type: 'success',
+        type: 'error',
         message: 'Pomodoro is stopped!'
       }
 
     case PAUSE_POMODORO:
       return {
-        type: 'success',
+        type: 'info',
         message: 'Pomodoro is paused!'
       }
 
     case RESUME_POMODORO:
       return {
-        type: 'success',
+        type: 'info',
         message: 'Pomodoro is resumed!'
       }
 
