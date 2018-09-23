@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import * as actions from '../store/actions/index'
 
 class CustomSettings extends Component {
 
@@ -21,7 +24,9 @@ class CustomSettings extends Component {
 
     const { minute, second } = this.state
 
-    console.log('form submitted', `${minute}:${second}`)
+    // console.log('form submitted', `${minute}:${second}`)
+    // console.log('props', this.props)
+    this.props.updateDisplayTime(`${minute}:${second}`)
 
     const elem = document.querySelector('.collapsible')
     const instance = window.M.Collapsible.getInstance(elem)
@@ -63,4 +68,10 @@ class CustomSettings extends Component {
   }
 }
 
-export default CustomSettings
+const mapDispatchToProps = dispatch => {
+  return {
+    updateDisplayTime: (updatedDisplayTimeString) => dispatch(actions.updateDisplayTime(updatedDisplayTimeString))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(CustomSettings)
