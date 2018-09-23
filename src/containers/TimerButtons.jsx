@@ -12,7 +12,7 @@ class TimerButtons extends Component {
         <div className="row">
           <div className="col offset-s3">
             {!start && !pause && !resume && <button
-              className="waves-effect waves-light btn-large green darken-4"
+              className="waves-effect waves-light btn-large green darken-4 pulse"
               onClick={() => this.props.startTimer()}>
               START
             </button>}

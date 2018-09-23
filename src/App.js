@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import NotyToaster from './components/NotyToaster'
 import TimerDisplay from './components/TimerDisplay'
 import TimerButtons from './containers/TimerButtons'
+import CustomSettings from './containers/CustomSettings'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
@@ -24,12 +25,15 @@ class App extends Component {
   }
 
   render() {
+    const { start, pause, resume } = this.props
+
     return (
       <Fragment>
         <NotyToaster />
         <Header />
         <TimerDisplay displayTime={this.props.displayTime} />
         <TimerButtons />
+        {!(start || pause || resume) && <CustomSettings />}
         <Footer />
       </Fragment>
     )
@@ -37,8 +41,14 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
+  const { displayTime } = state.timer
+  const { start, pause, resume } = state.activity
+
   return {
-    displayTime: state.timer.displayTime
+    displayTime,
+    start,
+    pause,
+    resume
   }
 }
 
