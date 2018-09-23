@@ -35,7 +35,7 @@ class CustomSettings extends Component {
 
   componentDidMount() {
     window.$('.collapsible').collapsible()
-    console.log('collapsible')
+    // console.log('collapsible')
   }
 
   render() {
