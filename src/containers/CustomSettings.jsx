@@ -22,6 +22,10 @@ class CustomSettings extends Component {
     const { minute, second } = this.state
 
     console.log('form submitted', `${minute}:${second}`)
+
+    const elem = document.querySelector('.collapsible')
+    const instance = window.M.Collapsible.getInstance(elem)
+    instance.close(0)
   }
 
   render() {
@@ -29,14 +33,14 @@ class CustomSettings extends Component {
     const { minute, second } = this.state
 
     return (
-      <div className="container">
+      <div className="container blue-grey-text text-darken-4">
         <ul className="collapsible z-depth-5">
           <li>
             <div className="collapsible-header cyan darken-3">
-              <span className="flow-text">Set Custom Time</span>
+              <h5>Set Custom Time</h5>
             </div>
             <div className="collapsible-body">
-              <h1 className="blue-grey-text text-darken-4">{`${minute}:${second}`}</h1>
+              <h1>{`${minute}:${second}`}</h1>
               <form onSubmit={this.handleSubmitForm}>
                 <p className="range-field">
                   <label htmlFor="minute">Minutes:</label>
