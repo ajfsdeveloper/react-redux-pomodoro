@@ -2,7 +2,8 @@ import {
   START_POMODORO,
   STOP_POMODORO,
   PAUSE_POMODORO,
-  RESUME_POMODORO
+  RESUME_POMODORO,
+  COMPLETE_POMODORO
 } from '../actions/actionTypes'
 
 import { updateObject } from '../../utils/utility'
@@ -24,6 +25,7 @@ const activityReducer = (state = initialState, action) => {
     case STOP_POMODORO: return stopPomodoro(state, action)
     case PAUSE_POMODORO: return pausePomodoro(state, action)
     case RESUME_POMODORO: return resumePomodoro(state, action)
+    case COMPLETE_POMODORO: return stopPomodoro(state, action)
     default: return state
   }
 }

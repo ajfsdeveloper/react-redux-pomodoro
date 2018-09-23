@@ -36,9 +36,10 @@ export const startTimer = (activity) => {
   return (dispatch, getState) => {
 
     let currentDisplayTime = getState().timer.displayTime
+    let defaultTime = getState().timer.defaultTime
 
     if (checkValidTime(currentDisplayTime) === false) {
-      return
+      dispatch(updateDisplayTime(defaultTime))
     }
 
     if (activity === 'START') {
