@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import NotyToaster from './components/NotyToaster'
 import TimerDisplay from './components/TimerDisplay'
+import TimerButtons from './containers/TimerButtons'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
@@ -27,15 +28,8 @@ class App extends Component {
       <Fragment>
         <NotyToaster />
         <Header />
-
         <TimerDisplay displayTime={this.props.displayTime} />
-
-        <button onClick={() => this.props.updateDisplayTime('13:45')}>UPDATE</button>
-        <button onClick={() => this.props.startTimer()}>START</button>
-        <button onClick={() => this.props.pauseTimer()}>PAUSE</button>
-        <button onClick={() => this.props.resumeTimer()}>RESUME</button>
-        <button onClick={() => this.props.stopTimer()}>STOP</button>
-
+        <TimerButtons />
         <Footer />
       </Fragment>
     )
@@ -51,11 +45,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setDefaultTime: (defaultTime) => dispatch(actions.setDefaultTime(defaultTime)),
-    updateDisplayTime: (newTime) => dispatch(actions.updateDisplayTime(newTime)),
-    startTimer: () => dispatch(actions.startTimer('START')),
-    stopTimer: () => dispatch(actions.stopTimer('STOP')),
-    pauseTimer: () => dispatch(actions.pauseTimer()),
-    resumeTimer: () => dispatch(actions.startTimer('RESUME'))
+    updateDisplayTime: (newTime) => dispatch(actions.updateDisplayTime(newTime))
   }
 }
 
