@@ -5,30 +5,30 @@ import * as actions from '../store/actions/index'
 
 class TimerButtons extends Component {
   render() {
-    const { start, stop, pause, resume, timerRunning } = this.props
+    const { start, pause, resume } = this.props
 
     return (
       <div className="container section">
         <div className="row">
           <div className="col offset-s3">
-            {(stop || (timerRunning && !start && !pause && !resume)) && <button
+            {!start && !pause && !resume && <button
               className="waves-effect waves-light btn-large"
               onClick={() => this.props.startTimer()}>
               START
             </button>}
-            {timerRunning && (start || resume) && <button
+            {(start || resume) && <button
               className="waves-effect waves-light btn-large"
               onClick={() => this.props.pauseTimer()}
             >
               PAUSE
             </button>}
-            {timerRunning && pause && <button
+            {pause && <button
               className="waves-effect waves-light btn-large"
               onClick={() => this.props.resumeTimer()}
             >
               RESUME
             </button>}
-            {timerRunning && (start || pause || resume) && <button
+            {(start || pause || resume) && <button
               className="waves-effect waves-light btn-large"
               onClick={() => this.props.stopTimer()}
             >
@@ -44,13 +44,11 @@ class TimerButtons extends Component {
 }
 
 const mapStateToProps = state => {
-  const { start, stop, pause, resume, timerRunning } = state.activity
+  const { start, pause, resume } = state.activity
   return {
     start,
-    stop,
     pause,
-    resume,
-    timerRunning
+    resume
   }
 }
 

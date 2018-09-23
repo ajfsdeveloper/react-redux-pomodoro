@@ -10,13 +10,11 @@ import { updateObject } from '../../utils/utility'
 const initialState = {
   start: false,
   pause: false,
-  resume: false,
-  stop: false,
-  timerRunning: true
+  resume: false
 }
 
 const startPomodoro = (state, action) => updateObject(state, { ...initialState, start: true })
-const stopPomodoro = (state, action) => updateObject(state, { ...initialState, stop: true, timerRunning: false })
+const stopPomodoro = (state, action) => updateObject(state, { ...initialState })
 const pausePomodoro = (state, action) => updateObject(state, { ...initialState, pause: true })
 const resumePomodoro = (state, action) => updateObject(state, { ...initialState, resume: true })
 
