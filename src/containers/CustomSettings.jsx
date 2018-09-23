@@ -33,6 +33,11 @@ class CustomSettings extends Component {
     instance.close(0)
   }
 
+  componentDidMount() {
+    window.$('.collapsible').collapsible()
+    console.log('collapsible')
+  }
+
   render() {
 
     const { minute, second } = this.state
