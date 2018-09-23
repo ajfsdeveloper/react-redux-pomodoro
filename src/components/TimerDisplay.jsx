@@ -5,7 +5,7 @@ const TimerDisplay = (props) => {
     <div className="row">
       <div className="col s6 offset-s3">
         <div className="card-panel teal z-depth-5">
-          <h1 className="center-align">{props.displayTime}</h1>
+          <h1 className="center-align blue-grey-text text-darken-4">{props.displayTime}</h1>
         </div>
       </div>
     </div>
