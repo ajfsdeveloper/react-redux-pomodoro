@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className="page-footer">
+    <footer className="page-footer brown">
       <div className="container">
         <div className="row">
           <div className="col 16">
@@ -10,7 +10,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="footer-copyright">
+      <div className="footer-copyright brown darken-2">
         <div className="container">
           &copy; 2018 Copyright Amol Jagtap
         </div>
