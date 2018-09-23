@@ -11,24 +11,18 @@ const initialState = {
   displayTime: null
 }
 
-const setDefaultTime = (state, action) => {
-  return updateObject(state, {
-    defaultTime: action.defaultTime,
-    displayTime: action.defaultTime
-  })
-}
+const setDefaultTime = (state, action) => updateObject(state, {
+  defaultTime: action.defaultTime,
+  displayTime: action.defaultTime
+})
 
-const updateDisplayTime = (state, action) => {
-  return updateObject(state, {
-    displayTime: action.updatedDisplayTime
-  })
-}
+const updateDisplayTime = (state, action) => updateObject(state, {
+  displayTime: action.updatedDisplayTime
+})
 
-const stopDisplayTime = (state, action) => {
-  return updateObject(state, {
-    displayTime: '00:00'
-  })
-}
+const stopDisplayTime = (state, action) => updateObject(state, {
+  displayTime: '00:00'
+})
 
 const timerReducer = (state = initialState, action) => {
   switch (action.type) {
