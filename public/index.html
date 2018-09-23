@@ -54,7 +54,10 @@
 
   <script>
     $(document).ready(function () {
-      $('.collapsible').collapsible()
+      $('.collapsible').collapsible();
+
+      let array_of_dom_elements = document.querySelectorAll("input[type=range]");
+      M.Range.init(array_of_dom_elements);
     })
   </script>
 </body>
